@@ -7,7 +7,7 @@ deployment:
 image:
   path: amirzadajmal/springboot-argocd
   pullPolicy: Always
-  tag: "v1"
+  tag: "v2"
 
 service:
   type: ClusterIP
