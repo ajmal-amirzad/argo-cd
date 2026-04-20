@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.deployment.name }}
+  name: {{ .Values.deployment.name }}-{{ .Values.deployment.namespace }}
   namespace: {{ .Values.deployment.namespace }}
   labels:
     app: {{ .Values.deployment.name }}
@@ -15,7 +15,7 @@ spec:
       labels:
         app: {{ .Values.deployment.name }}
     spec:
-      serviceAccountName: {{ .Values.deployment.name }}-sa
+      serviceAccountName: {{ .Values.deployment.name }}-{{ .Values.deployment.namespace }}
       containers:
         - name: {{ .Values.deployment.name }}
           image: {{ .Values.image.path }}:{{ .Values.image.tag }}
