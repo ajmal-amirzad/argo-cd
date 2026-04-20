@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kotlin-lower
+  namespace: argocd
+spec:
+  project: kotlin
+  source:
+    repoURL: https://github.com/ajmal-amirzad/argo-cd.git
+    targetRevision: infra
+    path: helm
+    helm:
+      valueFiles:
+      - values-lower.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: lower
